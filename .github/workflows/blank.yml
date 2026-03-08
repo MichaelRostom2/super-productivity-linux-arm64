@@ -1,3 +1,8 @@
+# FIXME: Future improvements
+# - only run when a new version gets released on the main page
+# - produce rpm, deb, and Appimages
+# - Auto publish to github releases
+# - Setup a fedora copr repo maybe
 name: Build Linux Arm64 Packages
 
 on:
@@ -15,19 +20,8 @@ jobs:
         with:
           repository: super-productivity/super-productivity
 
-      # work around for npm installs from git+https://github.com/johannesjo/J2M.git
-      - name: Reconfigure git to use HTTP authentication
-        run: >
-          git config --global url."https://github.com/".insteadOf
-          ssh://git@github.com/
-
       - name: Install npm Packages
         run: npm i
-
-      - name: Install Playwright Browsers
-        run: |
-          npx playwright install --with-deps chromium
-          npx playwright install-deps chromium
 
       - run: npm run env # Generate env.generated.ts
 
