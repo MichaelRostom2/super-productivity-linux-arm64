@@ -1,14 +1,14 @@
 # FIXME: Future improvements
-# - only run when a new version gets released on the main page
+# - auto run when a new version gets released on the main page
 # - produce rpm, deb, and Appimages
 # - Auto publish to github releases
 # - Setup a fedora copr repo maybe
 name: Build Linux Arm64 Packages
 
-on:
+on: workflow_dispatch
   # Triggers the workflow on push request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
 
 
 jobs:
