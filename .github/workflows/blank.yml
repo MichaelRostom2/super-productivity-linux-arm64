@@ -37,6 +37,8 @@ jobs:
         uses: elgohr/Github-Release-Action@v5
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: MyRelease
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
