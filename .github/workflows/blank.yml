@@ -44,7 +44,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./tmp/app-builds/superProductivity-aarch64.rpm
 
-      - name: Publish Release:
+      - name: Publish Release
           uses: StuYarrow/publish-release@v1.1.2
           env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
