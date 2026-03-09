@@ -30,6 +30,8 @@ jobs:
 
       - name: Build Electron RPM
         run: npx electron-builder --linux rpm --arm64
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Github Release
         uses: elgohr/Github-Release-Action@v5
