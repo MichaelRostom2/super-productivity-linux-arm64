@@ -34,25 +34,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Github Release
-        uses: actions/create-release@v1 
+        uses: ncipollo/release-action@v1 
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
           repo: MichaelRostom2/super-productivity-linux-arm64
-
-      - name: Upload Release Asset
-        uses: softprops/action-gh-release@v2
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./tmp/app-builds/superProductivity-aarch64.rpm
-
-      - name: Publish Release
-        uses: StuYarrow/publish-release@v1.1.2
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          id: ${{ steps.create_release.outputs.id }}
+          artifacts: ./tmp/app-builds/*.rpm
