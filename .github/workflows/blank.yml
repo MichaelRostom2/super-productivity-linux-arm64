@@ -40,3 +40,4 @@ jobs:
         with:
           repo: MichaelRostom2/super-productivity-linux-arm64
           artifacts: ./tmp/app-builds/*.rpm
+          tag: release
