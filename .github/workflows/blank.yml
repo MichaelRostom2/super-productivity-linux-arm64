@@ -13,7 +13,7 @@ on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - uses: actions/checkout@v6
@@ -21,7 +21,7 @@ jobs:
           repository: super-productivity/super-productivity
 
       - name: Install npm Packages
-        run: npm i
+        run: npm ci
 
       - run: npm run env # Generate env.generated.ts
 
@@ -35,9 +35,8 @@ jobs:
 
       - name: Create Github Release
         uses: ncipollo/release-action@v1 
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo: MichaelRostom2/super-productivity-linux-arm64
           artifacts: ./tmp/app-builds/*.rpm
           tag: release
+          token: ${{ secrets.GITHUB_TOKEN }}
