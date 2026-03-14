@@ -38,8 +38,6 @@ jobs:
       - name: Create Github Release
         uses: ncipollo/release-action@v1 
         with:
-          repo: MichaelRostom2/super-productivity-linux-arm64
           artifacts: ./.tmp/app-builds/*.rpm
           tag: release
-          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }} 
           allowUpdates: true
