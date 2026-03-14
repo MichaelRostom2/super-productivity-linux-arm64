@@ -31,7 +31,7 @@ jobs:
         run: npm run buildAllElectron:noTests:prod
 
       - name: Build Electron RPM
-        run: npx electron-builder --linux rpm --arm64
+        run: npx electron-builder --linux rpm --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,4 +41,5 @@ jobs:
           repo: MichaelRostom2/super-productivity-linux-arm64
           artifacts: ./.tmp/app-builds/*.rpm
           tag: release
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }} 
+          allowUpdates: true
