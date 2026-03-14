@@ -14,6 +14,8 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
@@ -37,6 +39,6 @@ jobs:
         uses: ncipollo/release-action@v1 
         with:
           repo: MichaelRostom2/super-productivity-linux-arm64
-          artifacts: ./tmp/app-builds/*.rpm
+          artifacts: ./.tmp/app-builds/*.rpm
           tag: release
           token: ${{ secrets.GITHUB_TOKEN }}
