@@ -38,6 +38,6 @@ jobs:
       - name: Create Github Release
         uses: ncipollo/release-action@v1 
         with:
-          artifacts: ./.tmp/app-builds/*.rpm
+          artifacts: ./.tmp/app-builds/*.rpm, ./.tmp/app-builds/*.deb, ./.tmp/app-builds/*.AppImage
           tag: release
           allowUpdates: true
