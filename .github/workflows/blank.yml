@@ -21,7 +21,7 @@ jobs:
           repository: super-productivity/super-productivity
 
       - name: Install npm Packages
-        run: npm ci
+        run: npm i
 
       - run: npm run env # Generate env.generated.ts
 
