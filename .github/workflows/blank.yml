@@ -31,7 +31,7 @@ jobs:
         run: npm run buildAllElectron:noTests:prod
 
       - name: Build Electron RPM
-        run: npx electron-builder --linux rpm --arm64 --publish never
+        run: npx electron-builder --linux --arm64 --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
