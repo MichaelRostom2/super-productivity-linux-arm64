@@ -1,15 +1,9 @@
 # FIXME: Future improvements
 # - auto run when a new version gets released on the main page
-# - produce rpm, deb, and Appimages
-# - Auto publish to github releases
 # - Setup a fedora copr repo maybe
 name: Build Linux Arm64 Packages
 
 on: workflow_dispatch
-  # Triggers the workflow on push request events but only for the "main" branch
-  #push:
-  #  branches: [ "main" ]
-
 
 jobs:
   build:
@@ -21,6 +15,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: super-productivity/super-productivity
+
+      - name: Extract upstream version
+        id: version
+        run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
 
       - name: Install npm Packages
         run: npm i
@@ -39,5 +38,5 @@ jobs:
         uses: ncipollo/release-action@v1 
         with:
           artifacts: ./.tmp/app-builds/*.rpm, ./.tmp/app-builds/*.deb, ./.tmp/app-builds/*.AppImage
-          tag: release
-          allowUpdates: true
+          tag: ${{ steps.version.outputs.version }}
+          skipIfReleaseExists: true
