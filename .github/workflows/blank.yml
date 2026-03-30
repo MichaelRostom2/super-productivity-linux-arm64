@@ -1,9 +1,10 @@
 # FIXME: Future improvements
-# - auto run when a new version gets released on the main page
 # - Setup a fedora copr repo maybe
 name: Build Linux Arm64 Packages
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: 17 4 * * 2 # Scheduled to run at 4:17 to avoid high load periods
 
 jobs:
   build:
